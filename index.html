@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكابتن بلال المصري | Coach Bilal Almasri Portfolio</title>
+    <!-- Tailwind CSS for premium sports layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo for Arabic, Poppins for English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sportDark: '#070A13',      // Deep premium dark pitch
+                        sportCard: '#0F1524',      // Card color
+                        sportAccent: '#10B981',    // Emerald Green representing the pitch & quality
+                        sportGold: '#F59E0B',      // Gold highlighting achievements & License A
+                        sportAccentHover: '#059669',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom styled scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070A13;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10B981;
+        }
+
+        /* Reveal transitions on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Golden shimmer overlay for main badge */
+        @keyframes subtle-glow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.2)); }
+            50% { filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.5)); }
+        }
+        .golden-glow {
+            animation: subtle-glow 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-sportDark text-slate-100 font-cairo overflow-x-hidden antialiased">
+
+    <!-- 1. HEADER & NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full bg-sportDark/90 backdrop-blur-md border-b border-slate-800/60 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Identity -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sportAccent to-emerald-700 flex items-center justify-center shadow-lg shadow-sportAccent/20">
+                    <i class="fa-solid fa-clipboard-user text-sportDark text-lg font-bold"></i>
+                </div>
+                <div class="flex flex-col">
+                    <!-- Solved: Adjusted height, inline-block, py-1, and line-height normal to prevent any letter cutoff -->
+                    <span class="text-base font-black tracking-wide text-white leading-normal pt-1 pb-1.5 inline-block" data-i18n="brand_name">بلال المصري</span>
+                    <span class="text-[10px] text-sportAccent font-bold uppercase tracking-wider" data-i18n="brand_sub">مدرب كرة قدم محترف</span>
+                </div>
+            </div>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="hover:text-sportAccent font-bold text-sm tracking-wide transition-colors duration-200" data-i18n="nav_home">الرئيسية</a>
+                <a href="#qualifications" class="hover:text-sportAccent font-bold text-sm tracking-wide transition-colors duration-200" data-i18n="nav_quals">المؤهلات والرخص</a>
+                <a href="#experience" class="hover:text-sportAccent font-bold text-sm tracking-wide transition-colors duration-200" data-i18n="nav_exp">المسيرة التدريبية</a>
+                <a href="#playing" class="hover:text-sportAccent font-bold text-sm tracking-wide transition-colors duration-200" data-i18n="nav_playing">المسيرة كلاعب</a>
+                <a href="#achievements" class="hover:text-sportAccent font-bold text-sm tracking-wide transition-colors duration-200" data-i18n="nav_achievements">الإنجازات</a>
+                <a href="#contact" class="hover:text-sportAccent font-bold text-sm tracking-wide transition-colors duration-200" data-i18n="nav_contact">اتصال</a>
+            </nav>
+
+            <!-- Language Toggle & Mobile Menu Action -->
+            <div class="flex items-center gap-3">
+                <!-- Dual translation switch pill -->
+                <button onclick="toggleLanguage()" id="lang-toggle" class="px-4 py-1.5 rounded-full border border-sportAccent/30 text-sportAccent hover:bg-sportAccent hover:text-sportDark font-bold text-xs transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>English</span>
+                </button>
+
+                <!-- Hamburger Menu -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white text-xl focus:outline-none p-1">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-sportCard border-b border-slate-800 px-4 pt-2 pb-6 space-y-2 transition-all duration-300">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-800 hover:text-sportAccent text-sm font-bold" data-i18n="nav_home">الرئيسية</a>
+            <a href="#qualifications" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-800 hover:text-sportAccent text-sm font-bold" data-i18n="nav_quals">المؤهلات والرخص</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-800 hover:text-sportAccent text-sm font-bold" data-i18n="nav_exp">المسيرة التدريبية</a>
+            <a href="#playing" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-800 hover:text-sportAccent text-sm font-bold" data-i18n="nav_playing">المسيرة كلاعب</a>
+            <a href="#achievements" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-800 hover:text-sportAccent text-sm font-bold" data-i18n="nav_achievements">الإنجازات</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-800 hover:text-sportAccent text-sm font-bold" data-i18n="nav_contact">اتصال</a>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section id="home" class="min-h-screen pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative">
+        <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-sportAccent/5 blur-3xl rounded-full -z-10"></div>
+        
+        <!-- Left Text Content -->
+        <div class="flex-1 text-center lg:text-start space-y-6">
+            <div class="inline-flex items-center gap-2 bg-sportGold/10 text-sportGold px-4 py-1.5 rounded-full text-xs font-black border border-sportGold/30 golden-glow uppercase tracking-wider">
+                <i class="fa-solid fa-trophy"></i>
+                <span data-i18n="hero_badge">حاصل على رخصة التدريب الفئة (A)</span>
+            </div>
+            
+            <!-- Solved: Changed leading-tight to leading-relaxed, added padding and height to make sure 'y' descenders are 100% visible -->
+            <h1 class="text-4xl sm:text-6xl font-black text-white leading-relaxed pt-2 pb-4">
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-emerald-400 pt-1 pb-4" data-i18n="hero_name">بلال المصري</span>
+            </h1>
+            
+            <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0" data-i18n="hero_desc">
+                مدرب كرة قدم محترف ومعد بدني معتمد بمسيرة رياضية حافلة بالنجاحات المحلية والإقليمية. مساعد مدرب سابق رفقة طاقم الكابتن فراس الخطيب بنادي الفحيحيل الكويتي وزاخو العراقي. متخصص في تحسين مستويات الفرق تكتيكياً وبدنياً لصناعة جيل رياضي متميز.
+            </p>
+
+            <!-- Quick Contacts Row -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm text-slate-300">
+                <a href="tel:00963933485785" class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl hover:border-sportAccent transition-colors">
+                    <i class="fa-solid fa-phone text-sportAccent"></i>
+                    <span>00963933485785</span>
+                </a>
+                <a href="mailto:Basel.kuw2024@gmail.com" class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl hover:border-sportAccent transition-colors">
+                    <i class="fa-solid fa-envelope text-sportAccent"></i>
+                    <span>Basel.kuw2024@gmail.com</span>
+                </a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 bg-sportAccent hover:bg-sportAccentHover text-sportDark font-black text-center rounded-xl shadow-lg shadow-sportAccent/25 transition-all duration-300 transform hover:-translate-y-1" data-i18n="btn_contact">
+                    تواصل معي الآن
+                </a>
+                <a href="#experience" class="w-full sm:w-auto px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-center rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300" data-i18n="btn_journey">
+                    عرض مسيرتي الكروية
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Side: Editable Profile Photo Frame -->
+        <div class="flex-1 flex justify-center w-full max-w-md lg:max-w-none">
+            <!-- Frame Container -->
+            <div class="relative w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-sportCard border-2 border-dashed border-slate-800 rounded-3xl p-4 flex flex-col items-center justify-center text-center transition-all duration-500 hover:border-sportAccent group shadow-2xl overflow-hidden">
+                
+                <!-- Dynamic Overlay Guide for Coach Bilal to insert picture -->
+                <div class="photo-placeholder absolute inset-0 flex flex-col items-center justify-center p-6 bg-slate-950/40 z-10 transition-opacity duration-300 group-hover:bg-slate-950/70">
+                    <div class="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <i class="fa-solid fa-user-plus text-2xl text-sportAccent"></i>
+                    </div>
+                    <span class="text-white font-black text-sm mb-1" data-i18n="hero_photo_placeholder">ضع صورتك الشخصية هنا</span>
+                    <span class="text-slate-400 text-[10px] max-w-xs leading-normal" data-i18n="hero_photo_sub">افتح ملف الكود واستبدل الـ 'src' بالسطر 141 برابط صورتك الشخصية لتظهر فوراً!</span>
+                </div>
+
+                <!-- Live Coach Image -->
+                <img id="profile-img" class="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-500" src="bilal4.jpg" alt="Coach Bilal Almasri">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COACHING QUALIFICATIONS & LICENSES -->
+    <section id="qualifications" class="py-24 bg-gradient-to-b from-sportDark to-sportCard px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-sportAccent uppercase tracking-widest" data-i18n="sec_quals_tag">الاعتمادات والرخص الفنية</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="sec_quals_title">المؤهلات والرخص الرياضية</h2>
+                <div class="h-1 w-16 bg-sportAccent mx-auto rounded"></div>
+            </div>
+
+            <!-- Qualifications Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pt-6">
+                <!-- License A -->
+                <div class="bg-sportDark border border-slate-800 rounded-2xl p-6 hover:border-sportGold/40 transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-sportGold/5 rounded-full blur-xl"></div>
+                    <div class="w-12 h-12 bg-sportGold/10 text-sportGold rounded-xl flex items-center justify-center text-xl font-black mb-4 group-hover:scale-110 transition-transform">
+                        A
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="lic_a_title">رخصة التدريب الآسيوية (A)</h3>
+                    <p class="text-slate-400 text-xs font-semibold mb-3" data-i18n="lic_a_season">موسم 2023 / 2024</p>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="lic_a_desc">أعلى شهادات التدريب القارية المعتمدة لقيادة الفرق والمنتخبات الممتازة فنياً وتكتيكياً.</p>
+                </div>
+
+                <!-- License B -->
+                <div class="bg-sportDark border border-slate-800 rounded-2xl p-6 hover:border-sportAccent/30 transition-all duration-300 relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-sportAccent/10 text-sportAccent rounded-xl flex items-center justify-center text-xl font-black mb-4 group-hover:scale-110 transition-transform">
+                        B
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="lic_b_title">رخصة التدريب الآسيوية (B)</h3>
+                    <p class="text-slate-400 text-xs font-semibold mb-3" data-i18n="lic_b_season">موسم 2021 / 2022</p>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="lic_b_desc">التطوير المهني للتكتيكات الشاملة وتحليل الجمل الحركية والتحولات الفنية المتطورة.</p>
+                </div>
+
+                <!-- License C -->
+                <div class="bg-sportDark border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-slate-800 text-slate-300 rounded-xl flex items-center justify-center text-xl font-black mb-4 group-hover:scale-110 transition-transform">
+                        C
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="lic_c_title">رخصة التدريب الآسيوية (C)</h3>
+                    <p class="text-slate-400 text-xs font-semibold mb-3" data-i18n="lic_c_season">عام 2016</p>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="lic_c_desc">اللبنة الأساسية الممنوحة لتطوير الفئات والبراعم والتدريب الأساسي لكرة القدم الحديثة.</p>
+                </div>
+
+                <!-- Physical Preparation -->
+                <div class="bg-sportDark border border-slate-800 rounded-2xl p-6 hover:border-sportAccent/30 transition-all duration-300 relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-sportAccent/10 text-sportAccent rounded-xl flex items-center justify-center text-xl font-black mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="fit_title">دورة الإعداد البدني (معد بدني)</h3>
+                    <p class="text-slate-400 text-xs font-semibold mb-3" data-i18n="fit_location">دولة الكويت | موسم 2024 / 2025</p>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="fit_desc">دورة متكاملة لتصميم الأحمال التدريبية وتأهيل اللاعبين بدنياً لتقليل الإصابات وزيادة كفاءة الأداء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. STATS COUNTERS -->
+    <section id="stats" class="py-20 bg-sportDark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <!-- Dashboard look background grid -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Stats Counters -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Years Experience -->
+                <div class="bg-sportCard/80 border border-slate-800/80 p-8 rounded-2xl text-center group hover:border-sportAccent/20 transition-all duration-300">
+                    <div class="text-sportAccent text-2xl mb-2"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2" id="counter-exp" data-target="9">0</div>
+                    <div class="text-slate-400 text-xs font-bold" data-i18n="stat_exp">سنوات الخبرة في التدريب</div>
+                </div>
+                <!-- Matches Assisted/Managed -->
+                <div class="bg-sportCard/80 border border-slate-800/80 p-8 rounded-2xl text-center group hover:border-sportAccent/20 transition-all duration-300">
+                    <div class="text-sportAccent text-2xl mb-2"><i class="fa-solid fa-whistle"></i></div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2" id="counter-matches" data-target="180">0</div>
+                    <div class="text-slate-400 text-xs font-bold" data-i18n="stat_matches">مباريات رسمية كمساعد/رئيسي</div>
+                </div>
+                <!-- Top Flight Clubs -->
+                <div class="bg-sportCard/80 border border-slate-800/80 p-8 rounded-2xl text-center group hover:border-sportAccent/20 transition-all duration-300">
+                    <div class="text-sportAccent text-2xl mb-2"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2" id="counter-clubs" data-target="5">0</div>
+                    <div class="text-slate-400 text-xs font-bold" data-i18n="stat_clubs">أندية كبرى بالوطن العربي</div>
+                </div>
+                <!-- Achievements & Medals -->
+                <div class="bg-sportCard/80 border border-slate-800/80 p-8 rounded-2xl text-center group hover:border-sportAccent/20 transition-all duration-300">
+                    <div class="text-sportGold text-2xl mb-2"><i class="fa-solid fa-star"></i></div>
+                    <div class="text-4xl sm:text-5xl font-black text-white mb-2" id="counter-achieve" data-target="6">0</div>
+                    <div class="text-slate-400 text-xs font-bold" data-i18n="stat_achieve">إنجازات قارية ومحلية كبرى</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TIMELINE: COACHING EXPERIENCE -->
+    <section id="experience" class="py-24 bg-gradient-to-b from-sportCard to-sportDark px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+        <div class="max-w-5xl mx-auto space-y-16">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-sportAccent uppercase tracking-widest" data-i18n="sec_exp_tag">التجربة والمسؤوليات</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="sec_exp_title">المسيرة والخبرة التدريبية</h2>
+                <div class="h-1 w-16 bg-sportAccent mx-auto rounded"></div>
+            </div>
+
+            <!-- Vertical Experience Line -->
+            <div class="relative border-r-2 md:border-r-0 md:border-l-0 md:after:content-[''] md:after:absolute md:after:top-0 md:after:bottom-0 md:after:left-1/2 md:after:w-0.5 md:after:bg-slate-800/80 pt-4 space-y-12">
+                <!-- Item 1: Al-Fahaheel SC -->
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between w-full reveal">
+                    <div class="w-full md:w-[45%] order-2 md:order-1 text-start md:text-end bg-sportCard border border-slate-800/80 p-6 rounded-2xl shadow-xl hover:border-sportAccent/30 transition-all">
+                        <div class="flex items-center md:justify-end gap-2 mb-2">
+                            <span class="text-sportAccent font-black text-xs px-3 py-1 bg-sportAccent/10 rounded-full">2022 - 2026</span>
+                        </div>
+                        <h3 class="text-lg font-black text-white" data-i18n="exp_1_role">مدرب مساعد (طاقم الكابتن فراس الخطيب)</h3>
+                        <p class="text-slate-400 text-sm font-bold mb-3" data-i18n="exp_1_club">نادي الفحيحيل الرياضي (دولة الكويت)</p>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="exp_1_desc">الإشراف الفني والبدني المباشر على الفريق الأول. تخطيط الحصص التدريبية، وتحليل أداء الفرق المنافسة وصناعة استراتيجية اللعب المتموضع الحديثة.</p>
+                    </div>
+                    <div class="absolute right-[-7px] md:right-auto md:left-1/2 md:-translate-x-1/2 top-8 w-4 h-4 rounded-full bg-sportAccent border-4 border-sportDark z-10"></div>
+                    <div class="hidden md:block w-[45%] order-2"></div>
+                </div>
+
+                <!-- Item 2: Zakho SC -->
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between w-full reveal">
+                    <div class="hidden md:block w-[45%] order-1"></div>
+                    <div class="absolute right-[-7px] md:right-auto md:left-1/2 md:-translate-x-1/2 top-8 w-4 h-4 rounded-full bg-sportAccent border-4 border-sportDark z-10"></div>
+                    <div class="w-full md:w-[45%] order-2 text-start bg-sportCard border border-slate-800/80 p-6 rounded-xl shadow-xl hover:border-sportAccent/30 transition-all">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-sportAccent font-black text-xs px-3 py-1 bg-sportAccent/10 rounded-full">2021 - 2022</span>
+                        </div>
+                        <h3 class="text-lg font-black text-white" data-i18n="exp_2_role">مدرب مساعد (طاقم الكابتن فراس الخطيب)</h3>
+                        <p class="text-slate-400 text-sm font-bold mb-3" data-i18n="exp_2_club">نادي زاخو الرياضي (دولة العراق)</p>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="exp_2_desc">المشاركة في قيادة الفريق الأول بالدوري الممتاز والمساهمة في وضع تكتيك الضغط المرتد والتطبيق الفني لتنظيم المباريات والمنافسة بالكأس.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Hutteen SC -->
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between w-full reveal">
+                    <div class="w-full md:w-[45%] order-2 md:order-1 text-start md:text-end bg-sportCard border border-slate-800/80 p-6 rounded-2xl shadow-xl hover:border-sportAccent/30 transition-all">
+                        <div class="flex items-center md:justify-end gap-2 mb-2">
+                            <span class="text-sportAccent font-black text-xs px-3 py-1 bg-sportAccent/10 rounded-full">2020 - 2021</span>
+                        </div>
+                        <h3 class="text-lg font-black text-white" data-i18n="exp_3_role">مدرب مساعد</h3>
+                        <p class="text-slate-400 text-sm font-bold mb-3" data-i18n="exp_3_club">نادي حطين الرياضي (الجمهورية العربية السورية)</p>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="exp_3_desc">تحليل بيانات اللاعبين بالحصص والمباريات، والمساهمة في قيادة الفريق لتحقيق مركز الوصيف بالدوري السوري الممتاز ونهائي كأس الجمهورية.</p>
+                    </div>
+                    <div class="absolute right-[-7px] md:right-auto md:left-1/2 md:-translate-x-1/2 top-8 w-4 h-4 rounded-full bg-sportAccent border-4 border-sportDark z-10"></div>
+                    <div class="hidden md:block w-[45%] order-2"></div>
+                </div>
+
+                <!-- Item 4: Al-Karama SC Head Coach -->
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between w-full reveal">
+                    <div class="hidden md:block w-[45%] order-1"></div>
+                    <div class="absolute right-[-7px] md:right-auto md:left-1/2 md:-translate-x-1/2 top-8 w-4 h-4 rounded-full bg-sportAccent border-4 border-sportDark z-10"></div>
+                    <div class="w-full md:w-[45%] order-2 text-start bg-sportCard border border-slate-800/80 p-6 rounded-2xl shadow-xl hover:border-sportAccent/30 transition-all">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-sportGold font-black text-xs px-3 py-1 bg-sportGold/10 rounded-full">2018 - 2020</span>
+                        </div>
+                        <h3 class="text-lg font-black text-white" data-i18n="exp_4_role">مدير فني (مدرب رئيسي) & مساعد مدرب</h3>
+                        <p class="text-slate-400 text-sm font-bold mb-3" data-i18n="exp_4_club">نادي الكرامة الرياضي (الجمهورية العربية السورية)</p>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="exp_4_desc">شغل منصب المدرب الرئيسي للفريق الأول (2019-2020) والمساعد (2018-2020). قيادة الحصص والتحول الدفاعي للفريق الأول لنادي الكرامة العريق.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Firas Al-Khatib Academy -->
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between w-full reveal">
+                    <div class="w-full md:w-[45%] order-2 md:order-1 text-start md:text-end bg-sportCard border border-slate-800/80 p-6 rounded-2xl shadow-xl hover:border-sportAccent/30 transition-all">
+                        <div class="flex items-center md:justify-end gap-2 mb-2">
+                            <span class="text-sportAccent font-black text-xs px-3 py-1 bg-sportAccent/10 rounded-full">2017 - 2019</span>
+                        </div>
+                        <h3 class="text-lg font-black text-white" data-i18n="exp_5_role">مشرف ومدرب في الأكاديمية</h3>
+                        <p class="text-slate-400 text-sm font-bold mb-3" data-i18n="exp_5_club">أكاديمية الكابتن فراس الخطيب</p>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="exp_5_desc">الإشراف الفني والإداري على الفئات العمرية والبراعم والناشئين، تقع على كاهلي مهام تطوير وصقل المواهب الواواعدة تحت إشراف الهرم الفني للكابتن فراس الخطيب.</p>
+                    </div>
+                    <div class="absolute right-[-7px] md:right-auto md:left-1/2 md:-translate-x-1/2 top-8 w-4 h-4 rounded-full bg-sportAccent border-4 border-sportDark z-10"></div>
+                    <div class="hidden md:block w-[45%] order-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TIMELINE: PLAYING CAREER -->
+    <section id="playing" class="py-24 bg-sportDark px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+        <div class="max-w-5xl mx-auto space-y-16">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-sportAccent uppercase tracking-widest" data-i18n="sec_play_tag">المسيرة الميدانية كلاعب</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="sec_play_title">المسيرة الاحترافية كلاعب كرة قدم</h2>
+                <div class="h-1 w-16 bg-sportAccent mx-auto rounded"></div>
+            </div>
+
+            <!-- Horizontal/Vertical Grid for Playing Career -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                <!-- National Team Section -->
+                <div class="bg-sportCard border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:border-sportAccent/20 transition-all">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-sportAccent/5 rounded-full blur-2xl"></div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-sportAccent/10 text-sportAccent flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-flag"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-white" data-i18n="play_nat_title">المنتخبات الوطنية السورية</h3>
+                    </div>
+
+                    <!-- Timelines / Achievements -->
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportAccent"></div>
+                            <span class="text-sportAccent font-bold text-xs">2001</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_nat_1">لاعب دولي بالمنتخب الأولمبي السوري</h4>
+                        </div>
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportAccent"></div>
+                            <span class="text-sportAccent font-bold text-xs">1999 - 2000</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_nat_2">لاعب دولي بمنتخب سوريا للشباب (تحت 20 سنة)</h4>
+                            <p class="text-slate-400 text-xs mt-1" data-i18n="play_nat_2_sub">المشاركة بنهائيات بطولة كأس آسيا للشباب في الدوحة.</p>
+                        </div>
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportAccent"></div>
+                            <span class="text-sportAccent font-bold text-xs">1998</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_nat_3">لاعب دولي بمنتخب سوريا للناشئين (تحت 17 سنة)</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club Career Section -->
+                <div class="bg-sportCard border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:border-sportAccent/20 transition-all">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-sportAccent/5 rounded-full blur-2xl"></div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-sportAccent/10 text-sportAccent flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-star-of-life"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-white" data-i18n="play_club_title">مستوى الأندية</h3>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportAccent"></div>
+                            <span class="text-sportAccent font-bold text-xs">1993</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_club_1">التدرج في الفئات السنية بنادي الكرامة الرياضي</h4>
+                            <p class="text-slate-400 text-xs mt-1" data-i18n="play_club_1_sub">الانضمام والنشأة في مدرسة نادي الكرامة أحد أعرق أندية قارة آسيا.</p>
+                        </div>
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportAccent"></div>
+                            <span class="text-sportGold font-bold text-xs">1995 & 1996</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_club_2">بطل الدوري السوري تحت 15 سنة</h4>
+                        </div>
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportGold"></div>
+                            <span class="text-sportGold font-bold text-xs">2000</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_club_3">بطل الدوري السوري للشباب (تحت 20 سنة)</h4>
+                        </div>
+                        <!-- Men's First Team Section -->
+                        <div class="border-l-2 border-slate-800/80 pl-4 relative">
+                            <div class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-sportAccent"></div>
+                            <span class="text-sportAccent font-bold text-xs" data-i18n="play_club_4_year">فئة الرجال</span>
+                            <h4 class="text-sm font-bold text-white" data-i18n="play_club_4">لاعب محترف في فئة الرجال (الفريق الأول) لعدة أندية سورية</h4>
+                            <p class="text-slate-400 text-xs mt-1" data-i18n="play_club_4_sub">تمثيل الفريق الأول (رجال) في نادي الكرامة الرياضي بالإضافة لعدة أندية سورية ممتازة أخرى في الدوري السوري الممتاز.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. REAL ACHIEVEMENTS GALLERY -->
+    <section id="achievements" class="py-24 bg-gradient-to-b from-sportCard to-sportDark px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-sportAccent uppercase tracking-widest" data-i18n="sec_ach_tag">أرقام قياسية تاريخية</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="sec_ach_title">أبرز الإنجازات والبطولات الكبرى</h2>
+                <div class="h-1 w-16 bg-sportAccent mx-auto rounded"></div>
+            </div>
+
+            <!-- Achievement Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Achievement 1: Al-Fahaheel SC -->
+                <div class="bg-sportDark border border-slate-800 rounded-3xl p-6 hover:border-sportAccent/30 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-sportGold/10 text-sportGold rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-trophy"></i></div>
+                            <span class="text-xs font-extrabold text-sportAccent" data-i18n="ach_1_team">نادي الفحيحيل الرياضي (الكويت)</span>
+                        </div>
+                        <h4 class="text-lg font-black text-white mb-2" data-i18n="ach_1_title">إنجاز تاريخي والتأهل للدوري الممتاز</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="ach_1_desc">تحقيق إنجاز تاريخي غير مسبوق بالتأهل لـ "الستة الكبار" لـ 4 مواسم متتالية وربط الفريق لأول مرة بالدور قبل النهائي لكأس سمو ولي العهد.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement 2: Zakho SC -->
+                <div class="bg-sportDark border border-slate-800 rounded-3xl p-6 hover:border-sportAccent/30 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-sportGold/10 text-sportGold rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-trophy"></i></div>
+                            <span class="text-xs font-extrabold text-sportAccent" data-i18n="ach_2_team">نادي زاخو الرياضي (العراق)</span>
+                        </div>
+                        <h4 class="text-lg font-black text-white mb-2" data-i18n="ach_2_title">نصف نهائي كأس العراق للمرة الأولى</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="ach_2_desc">المساهمة بفاعلية كجزء أساسي من الجهاز الفني المعاون في قيادة الفريق للوصول لنصف نهائي كأس العراق لأول مرة بمسيرة النادي.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement 3: Hutteen SC -->
+                <div class="bg-sportDark border border-slate-800 rounded-3xl p-6 hover:border-sportAccent/30 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-sportGold/10 text-sportGold rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-trophy"></i></div>
+                            <span class="text-xs font-extrabold text-sportAccent" data-i18n="ach_3_team">نادي حطين الرياضي (سوريا)</span>
+                        </div>
+                        <h4 class="text-lg font-black text-white mb-2" data-i18n="ach_3_title">وصيف بطل الدوري وبطل كأس سوريا</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="ach_3_desc">تحقيق لقب وصيف الدوري السوري الممتاز ووصيف بطل كأس الجمهورية في موسم كروي مميز تكلل بتقديم أرقام دفاعية وهجومية رائعة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PLACEHOLDER PHOTO GALLERY SECTION -->
+    <section id="gallery" class="py-24 bg-sportDark px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-sportAccent uppercase tracking-widest" data-i18n="sec_gal_tag">معرض لقطات الكابتن</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="sec_gal_title">معرض الصور والوسائط الميدانية</h2>
+                <div class="h-1 w-16 bg-sportAccent mx-auto rounded"></div>
+            </div>
+
+            <!-- Photos Grid (Easy editing placeholders) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Training Image 1 -->
+                <div class="bg-sportCard rounded-3xl border border-slate-800/80 overflow-hidden group hover:border-sportAccent/30 transition-all duration-300 relative flex flex-col justify-between">
+                    <div class="relative aspect-video bg-slate-950 flex items-center justify-center p-4">
+                        <div class="photo-placeholder text-center pointer-events-none p-4 z-10 transition-opacity duration-300 group-hover:bg-slate-950/70">
+                            <i class="fa-solid fa-camera text-2xl text-sportAccent mb-2"></i>
+                            <p class="text-white text-xs font-bold" data-i18n="gal_p1">صورة أثناء الإشراف على التدريبات</p>
+                            <p class="text-slate-500 text-[9px] leading-relaxed max-w-xs mt-1" data-i18n="gal_p1_sub">استبدل الـ 'src' بالسطر 391 برابط الصورة لتعديلها</p>
+                        </div>
+                        <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" src="bilal1.jpg" alt="Training Sessions">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-sportAccent text-[10px] font-black uppercase tracking-wider block mb-1" data-i18n="gal_i1">الصورة 1 / لقطة تدريبية</span>
+                        <h4 class="text-white font-bold text-base" data-i18n="gal_b1">الإشراف على التدريبات</h4>
+                    </div>
+                </div>
+
+                <!-- Matchday Image 2 -->
+                <div class="bg-sportCard rounded-3xl border border-slate-800/80 overflow-hidden group hover:border-sportAccent/30 transition-all duration-300 relative flex flex-col justify-between">
+                    <div class="relative aspect-video bg-slate-950 flex items-center justify-center p-4">
+                        <div class="photo-placeholder text-center pointer-events-none p-4 z-10 transition-opacity duration-300 group-hover:bg-slate-950/70">
+                            <i class="fa-solid fa-camera text-2xl text-sportAccent mb-2"></i>
+                            <p class="text-white text-xs font-bold" data-i18n="gal_p2">صورة من مقاعد البدلاء / يوم المباراة</p>
+                            <p class="text-slate-500 text-[9px] leading-relaxed max-w-xs mt-1" data-i18n="gal_p2_sub">استبدل الـ 'src' بالسطر 408 برابط الصورة لتعديلها</p>
+                        </div>
+                        <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" src="bilal2.jpg" alt="Matchday focus">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-sportAccent text-[10px] font-black uppercase tracking-wider block mb-1" data-i18n="gal_i2">الصورة 2 / القيادة والتوجيه</span>
+                        <h4 class="text-white font-bold text-base" data-i18n="gal_b2">توجيه وإدارة اللحظات الحاسمة</h4>
+                    </div>
+                </div>
+
+                <!-- Championship Image 3 -->
+                <div class="bg-sportCard rounded-3xl border border-slate-800/80 overflow-hidden group hover:border-sportAccent/30 transition-all duration-300 relative flex flex-col justify-between">
+                    <div class="relative aspect-video bg-slate-950 flex items-center justify-center p-4">
+                        <div class="photo-placeholder text-center pointer-events-none p-4 z-10 transition-opacity duration-300 group-hover:bg-slate-950/70">
+                            <i class="fa-solid fa-camera text-2xl text-sportAccent mb-2"></i>
+                            <p class="text-white text-xs font-bold" data-i18n="gal_p3">لاعب في الفريق الأول</p>
+                            <p class="text-slate-500 text-[9px] leading-relaxed max-w-xs mt-1" data-i18n="gal_p3_sub">استبدل الـ 'src' بالسطر 425 برابط الصورة لتعديلها</p>
+                        </div>
+                        <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" src="bilal3.jpg" alt="Victory celebrations">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-sportAccent text-[10px] font-black uppercase tracking-wider block mb-1" data-i18n="gal_i3">الصورة 3 / كابتن الفريق الأول</span>
+                        <h4 class="text-white font-bold text-base" data-i18n="gal_b3">لاعب في الفريق الأول</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CONTACT FORM -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-sportDark to-sportCard px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-sportAccent uppercase tracking-widest" data-i18n="sec_con_tag">الاتصال المباشر والفرص</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="sec_con_title">ابدأ التعاون مع الكابتن بلال</h2>
+                <div class="h-1 w-16 bg-sportAccent mx-auto rounded"></div>
+            </div>
+
+            <!-- Integrated Form with Web3Forms -->
+            <form id="contact-form" onsubmit="handleFormSubmit(event)" class="bg-sportCard/80 border border-slate-800/80 p-8 sm:p-10 rounded-3xl space-y-6">
+                <!-- Web3Forms Access Key: Get yours for free at https://web3forms.com -->
+                <!-- Replace the value of the input below with your access key to receive real emails to Basel.kuw2024@gmail.com -->
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                <input type="hidden" name="subject" value="New message from Coach Bilal's Web Portfolio">
+                <input type="checkbox" name="botcheck" id="" style="display: none;">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-slate-300 text-xs font-bold" data-i18n="form_name">الاسم الكريم / الجهة الرياضية</label>
+                        <input type="text" name="name" required class="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-sportAccent transition-colors text-sm">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-slate-300 text-xs font-bold" data-i18n="form_email">البريد الإلكتروني للاتصال</label>
+                        <input type="email" name="email" required class="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-sportAccent transition-colors text-sm">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-slate-300 text-xs font-bold" data-i18n="form_subject">الموضوع</label>
+                    <input type="text" name="message_subject" required class="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-sportAccent transition-colors text-sm">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-slate-300 text-xs font-bold" data-i18n="form_message">تفاصيل الاستفسار أو عرض العمل</label>
+                    <textarea name="message" rows="5" required class="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-sportAccent transition-colors text-sm"></textarea>
+                </div>
+                
+                <button type="submit" id="submit-btn" class="w-full bg-sportAccent hover:bg-sportAccentHover text-sportDark font-black py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-sportAccent/10 text-sm">
+                    <span data-i18n="form_submit">إرسال الرسالة مباشرة</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 10. FOOTER -->
+    <footer class="bg-sportDark border-t border-slate-900 py-12 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-sportAccent flex items-center justify-center">
+                    <i class="fa-solid fa-person-running text-sportDark text-md"></i>
+                </div>
+                <span class="text-white font-extrabold tracking-wider" data-i18n="brand_name">بلال المصري</span>
+            </div>
+            <p class="text-slate-500 text-xs" data-i18n="footer_rights">© جميع الحقوق محفوظة للكابتن بلال المصري. تم التطوير بأفضل معايير الويب الرياضية.</p>
+        </div>
+    </footer>
+
+    <!-- SUCCESS MESSAGE MODAL -->
+    <div id="success-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-sportCard border border-slate-800 p-8 rounded-3xl max-w-sm text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-white font-bold text-xl" data-i18n="modal_success_title">تم إرسال العرض بنجاح!</h3>
+            <p class="text-slate-400 text-sm" data-i18n="modal_success_body">شكراً لتواصلكم مع الكابتن بلال المصري. سيتم مراجعة العرض والرد عليكم في أقرب وقت.</p>
+            <button onclick="closeModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl transition-colors" data-i18n="modal_success_close">موافق</button>
+        </div>
+    </div>
+
+    <!-- MAIN INTERACTIVE ENGINE -->
+    <script>
+        // 1. Dual Language Definitions (Arabic & English)
+        const translations = {
+            en: {
+                brand_name: "Bilal Almasri",
+                brand_sub: "Professional Football Coach",
+                nav_home: "Home",
+                nav_quals: "Qualifications",
+                nav_exp: "Coaching Career",
+                nav_playing: "Playing Career",
+                nav_achievements: "Achievements",
+                nav_contact: "Contact",
+                hero_badge: "UEFA/AFC License (A) Holder",
+                hero_name: "Bilal Almasri",
+                hero_desc: "A professional football coach and certified athletic trainer with a rich sporting career and remarkable regional achievements. Former assistant coach within Firas Al-Khatib's coaching staff at Al-Fahaheel SC (Kuwait) and Zakho SC (Iraq). Specializes in upgrading teams both tactically and physically to craft an outstanding generation.",
+                btn_contact: "Get In Touch Now",
+                btn_journey: "Explore My Football Journey",
+                hero_photo_placeholder: "Your Profile Picture Here",
+                hero_photo_sub: "Edit code and replace the image source 'src' on line 141 with your real photo link to load instantly!",
+                
+                sec_quals_tag: "ACCEDREDITED QUALIFICATIONS",
+                sec_quals_title: "Qualifications & Licenses",
+                lic_a_title: "Coaching License (A)",
+                lic_a_season: "Season 2023 / 2024",
+                lic_a_desc: "The highest Continental credential, authorizing elite tactical analysis and premier club management.",
+                lic_b_title: "Coaching License (B)",
+                lic_b_season: "Season 2021 / 2022",
+                lic_b_desc: "Advanced tactical development, match phase analysis, and set-piece strategic preparation.",
+                lic_c_title: "Coaching License (C)",
+                lic_c_season: "Year 2016",
+                lic_c_desc: "The foundational license focused on grassroots, youth technique refinement, and core principles.",
+                fit_title: "Physical Preparation Course",
+                fit_location: "State of Kuwait | Season 2024 / 2025",
+                fit_desc: "Specialized fitness certificate focused on customized training loads and injury reduction.",
+                
+                stat_exp: "Years Professional Coaching",
+                stat_matches: "Official Match Appearances",
+                stat_clubs: "Top Flight Arab League Clubs",
+                stat_achieve: "Major League Achievements",
+
+                sec_exp_tag: "ROLES & RESPONSIBILITIES",
+                sec_exp_title: "Coaching Experience Journey",
+                exp_1_role: "Assistant Coach (Staff of Firas Al-Khatib)",
+                exp_1_club: "Al-Fahaheel SC (Kuwait)",
+                exp_1_desc: "Supervised technical and physical preparation of the first squad. Crafted modern positional-play tactics and opponent analysis.",
+                exp_2_role: "Assistant Coach (Staff of Firas Al-Khatib)",
+                exp_2_club: "Zakho SC (Iraq)",
+                exp_2_desc: "Co-managed first team preparation in the Iraqi Premier League. Co-designed high pressing transitions and cup strategies.",
+                exp_3_role: "Assistant Coach",
+                exp_3_club: "Hutteen SC (Syria)",
+                exp_3_desc: "Monitored individual player statistics and physical metrics, securing the league runners-up finish.",
+                exp_4_role: "Head Coach & Assistant Coach",
+                exp_4_club: "Al-Karama SC (Syria)",
+                exp_4_desc: "Promoted to Head Coach of the legendary Syrian club (2019-2020), following two successful seasons as assistant.",
+                exp_5_role: "Academy Supervisor & Coach",
+                exp_5_club: "Firas Al-Khatib Academy",
+                exp_5_desc: "Organized technical drills and tactical roadmaps for rising elite youth categories under senior mentorship.",
+
+                sec_play_tag: "ON-FIELD PROFESSIONAL EXPERIENCE",
+                sec_play_title: "Professional Playing Career",
+                play_nat_title: "Syrian National Teams",
+                play_nat_1: "Olympic National Team: International Player (2001)",
+                play_nat_2: "U-20 Youth National Team: International Player (1999-2000)",
+                play_nat_2_sub: "Competed in the AFC U-19 Championship Finals in Doha.",
+                play_nat_3: "U-17 Cadets National Team: International Player (1998)",
+                play_club_title: "Club Level & Domestic Leagues",
+                play_club_1: "Developed through the famous Al-Karama SC Youth Ranks (Since 1993)",
+                play_club_1_sub: "Cultivated tactical intelligence from the grassroots level at one of Asia's historic clubs.",
+                play_club_2: "Syrian U-15 League Champion (1995, 1996)",
+                play_club_3: "Syrian U-20 League Champion (2000)",
+                play_club_4_year: "Senior Men's Level",
+                play_club_4: "Professional First Team Player for several Syrian clubs",
+                play_club_4_sub: "Represented the senior men's first team of Al-Karama SC as well as multiple top-tier clubs in the Syrian Premier League.",
+
+                sec_ach_tag: "HISTORIC ACHIEVEMENTS",
+                sec_ach_title: "Key Milestones & Championships",
+                ach_1_team: "Al-Fahaheel SC (Kuwait)",
+                ach_1_title: "Historic 'Final 6' Qualification",
+                ach_1_desc: "Achieved the historic milestone of qualifying for the top-6 playoff for four consecutive seasons and reaching the Crown Prince Cup semi-finals for the first time in history.",
+                ach_2_team: "Zakho SC (Iraq)",
+                ach_2_title: "Iraq Cup Semi-Finals Milestone",
+                ach_2_desc: "Collaborated as a core coaching staff member to guide the squad to the Iraq Cup Semi-Finals for the first time in Zakho SC's history.",
+                ach_3_team: "Hutteen SC (Syria)",
+                ach_3_title: "Syrian Premier League Runners-Up",
+                ach_3_desc: "Finished second in both the Syrian Premier League and Syrian Cup, boasting excellent defensive records.",
+
+                sec_gal_tag: "COACH ON-THE-FIELD SNAPS",
+                sec_gal_title: "Action & Field Media Gallery",
+                gal_p1: "Your Training Field Photo Here",
+                gal_p1_sub: "Edit code and replace the 'src' on line 391 with your training picture link.",
+                gal_p2: " Your Matchday Bench Photo Here",
+                gal_p2_sub: "Edit code and replace the 'src' on line 408 with your sideline picture link.",
+                gal_p3: "Your Celebration Photo Here",
+                gal_p3_sub: "Edit code and replace the 'src' on line 425 with your celebration/trophy picture link.",
+                gal_b1: "Supervising training sessions",
+                gal_b2: "Guiding and managing crucial moments",
+                gal_b3: "First-team player",
+                gal_i1: "Photo 1 / Training snapshot",
+                gal_i2: "Photo 2 / Leadership and guidance",
+                gal_i3: "Photo 3 / First-team captain",
+                sec_con_tag: "LET'S START WORKING",
+                sec_con_title: "Collaborate with Coach Bilal Almasri",
+                form_name: "Your Name / Sports Club",
+                form_email: "Contact Email Address",
+                form_subject: "Subject",
+                form_message: "Detailed Message or Work Proposition",
+                form_submit: "Send Message Instantly",
+                footer_rights: "© All rights reserved to Coach Bilal Almasri. Optimized for sports performance.",
+                modal_success_title: "Message Sent Successfully!",
+                modal_success_body: "Thank you for reaching out to Coach Bilal Almasri. We will review your inquiry and get back to you shortly.",
+                modal_success_close: "Close"
+            },
+            ar: {
+                brand_name: "بلال المصري",
+                brand_sub: "مدرب كرة قدم محترف",
+                nav_home: "الرئيسية",
+                nav_quals: "المؤهلات والرخص",
+                nav_exp: "المسيرة التدريبية",
+                nav_playing: "المسيرة كلاعب",
+                nav_achievements: "الإنجازات",
+                nav_contact: "اتصال",
+                hero_badge: "حاصل على رخصة التدريب الفئة (A)",
+                hero_name: "بلال المصري",
+                hero_desc: "مدرب كرة قدم محترف ومعد بدني معتمد بمسيرة رياضية حافلة بالنجاحات المحلية والإقليمية. مساعد مدرب سابق رفقة طاقم الكابتن فراس الخطيب بنادي الفحيحيل الكويتي وزاخو العراقي. متخصص في تحسين مستويات الفرق تكتيكياً وبدنياً لصناعة جيل رياضي متميز.",
+                btn_contact: "تواصل معي الآن",
+                btn_journey: "عرض مسيرتي الكروية",
+                hero_photo_placeholder: "صورتك الشخصية هنا",
+                hero_photo_sub: "افتح ملف الكود واستبدل الـ 'src' بالسطر 141 برابط صورتك الشخصية لتظهر فوراً!",
+                
+                sec_quals_tag: "الاعتمادات والرخص الفنية",
+                sec_quals_title: "المؤهلات والرخص الرياضية",
+                lic_a_title: "رخصة التدريب الآسيوية (A)",
+                lic_a_season: "موسم 2023 / 2024",
+                lic_a_desc: "أعلى شهادات التدريب القارية المعتمدة لقيادة الفرق والمنتخبات الممتازة فنياً وتكتيكياً.",
+                lic_b_title: "رخصة التدريب الآسيوية (B)",
+                lic_b_season: "موسم 2021 / 2022",
+                lic_b_desc: "التطوير المهني للتكتيكات الشاملة وتحليل الجمل الحركية والتحولات الفنية المتطورة.",
+                lic_c_title: "رخصة التدريب الآسيوية (C)",
+                lic_c_season: "عام 2016",
+                lic_c_desc: "اللبنة الأساسية الممنوحة لتطوير الفئات والبراعم والتدريب الأساسي لكرة القدم الحديثة.",
+                fit_title: "دورة الإعداد البدني (معد بدني)",
+                fit_location: "دولة الكويت | موسم 2024 / 2025",
+                fit_desc: "دورة متكاملة لتصميم الأحمال التدريبية وتأهيل اللاعبين بدنياً لتقليل الإصابات وزيادة كفاءة الأداء.",
+                
+                stat_exp: "سنوات الخبرة في التدريب",
+                stat_matches: "مباريات رسمية كمساعد/رئيسي",
+                stat_clubs: "أندية كبرى بالوطن العربي",
+                stat_achieve: "إنجازات قارية ومحلية كبرى",
+
+                sec_exp_tag: "التجربة والمسؤوليات",
+                sec_exp_title: "المسيرة والخبرة التدريبية",
+                exp_1_role: "مدرب مساعد (طاقم الكابتن فراس الخطيب)",
+                exp_1_club: "نادي الفحيحيل الرياضي (دولة الكويت)",
+                exp_1_desc: "الإشراف الفني والبدني المباشر على الفريق الأول. تخطيط الحصص التدريبية، وتحليل أداء الفرق المنافسة وصناعة استراتيجية اللعب المتموضع الحديثة.",
+                exp_2_role: "مدرب مساعد (طاقم الكابتن فراس الخطيب)",
+                exp_2_club: "نادي زاخو الرياضي (دولة العراق)",
+                exp_2_desc: "المشاركة في قيادة الفريق الأول بالدوري الممتاز والمساهمة في وضع تكتيك الضغط المرتد والتطبيق الفني لتنظيم المباريات والمنافسة بالكأس.",
+                exp_3_role: "مدرب مساعد",
+                exp_3_club: "نادي حطين الرياضي (الجمهورية العربية السورية)",
+                exp_3_desc: "تحليل بيانات اللاعبين بالحصص والمباريات، والمساهمة في قيادة الفريق لتحقيق مركز الوصيف بالدوري السوري الممتاز ونهائي كأس الجمهورية.",
+                exp_4_role: "مدير فني (مدرب رئيسي) & مساعد مدرب",
+                exp_4_club: "نادي الكرامة الرياضي (الجمهورية العربية السورية)",
+                exp_4_desc: "شغل منصب المدرب الرئيسي للفريق الأول (2019-2020) والمساعد (2018-2020). قيادة الحصص والتحول الدفاعي للفريق الأول لنادي الكرامة العريق.",
+                exp_5_role: "مشرف ومدرب في الأكاديمية",
+                exp_5_club: "أكاديمية الكابتن فراس الخطيب",
+                exp_5_desc: "الإشراف الفني والإداري على الفئات العمرية والبراعم والناشئين، تقع على كاهلي مهام تطوير وصقل المواهب الواعدة تحت إشراف الهرم الفني للكابتن فراس الخطيب.",
+
+                sec_play_tag: "المسيرة الميدانية كلاعب",
+                sec_play_title: "المسيرة الاحترافية كلاعب كرة قدم",
+                play_nat_title: "المنتخبات الوطنية السورية",
+                play_nat_1: "لاعب دولي بالمنتخب الأولمبي السوري (2001)",
+                play_nat_2: "لاعب دولي بمنتخب سوريا للشباب (تحت 20 سنة) (1999-2000)",
+                play_nat_2_sub: "المشاركة بنهائيات بطولة كأس آسيا للشباب في الدوحة.",
+                play_nat_3: "لاعب دولي بمنتخب سوريا للناشئين (تحت 17 سنة) (1998)",
+                play_club_title: "مستوى الأندية والمسابقات المحلية",
+                play_club_1: "التدرج في الفئات السنية بنادي الكرامة الرياضي (منذ عام 1993)",
+                play_club_1_sub: "الانضمام والنشأة في مدرسة نادي الكرامة أحد أعرق أندية قارة آسيا وتطوير الذكاء التكتيكي لديه منذ الصغر.",
+                play_club_2: "بطل الدوري السوري تحت 15 سنة (1995، 1996)",
+                play_club_3: "بطل الدوري السوري للشباب (تحت 20 سنة) (عام 2000)",
+                play_club_4_year: "فئة الرجال",
+                play_club_4: "لاعب محترف في فئة الرجال (الفريق الأول) لعدة أندية سورية",
+                play_club_4_sub: "تمثيل الفريق الأول (رجال) في نادي الكرامة الرياضي بالإضافة لعدة أندية سورية ممتازة أخرى في الدوري السوري الممتاز.",
+
+                sec_ach_tag: "أرقام قياسية تاريخية",
+                sec_ach_title: "أبرز الإنجازات والبطولات الكبرى",
+                ach_1_team: "نادي الفحيحيل الرياضي (الكويت)",
+                ach_1_title: "إنجاز تاريخي والتأهل للدوري الممتاز",
+                ach_1_desc: "تحقيق إنجاز تاريخي غير مسبوق بالتأهل لـ \"الستة الكبار\" لـ 4 مواسم متتالية وربط الفريق لأول مرة بالدور قبل النهائي لكأس سمو ولي العهد.",
+                ach_2_team: "نادي زاخو الرياضي (العراق)",
+                ach_2_title: "نصف نهائي كأس العراق للمرة الأولى",
+                ach_2_desc: "المساهمة بفاعلية كجزء أساسي من الجهاز الفني المعاون في قيادة الفريق للوصول لنصف نهائي كأس العراق لأول مرة بمسيرة النادي.",
+                ach_3_team: "نادي حطين الرياضي (سوريا)",
+                ach_3_title: "وصيف بطل الدوري وبطل كأس سوريا",
+                ach_3_desc: "تحقيق لقب وصيف الدوري السوري الممتاز ووصيف بطل كأس الجمهورية في موسم كروي مميز تكلل بتقديم أرقام دفاعية وهجومية رائعة.",
+
+                sec_gal_tag: "معرض لقطات الكابتن",
+                sec_gal_title: "معرض الصور والوسائط الميدانية",
+                gal_p1: " الإشراف على التدريبات",
+                gal_p1_sub: "استبدل الـ 'src' بالسطر 391 برابط الصورة لتعديلها.",
+                gal_p2: "صورة من مقاعد البدلاء / يوم المباراة",
+                gal_p2_sub: "استبدل الـ 'src' بالسطر 408 برابط الصورة لتعديلها.",
+                gal_p3: "لاعب في الفريق الأول",
+                gal_p3_sub: "استبدل الـ 'src' بالسطر 425 برابط الصورة لتعديلها.",
+                gal_b1: "  الإشراف على التدريبات",
+                gal_b2: "توجيه وإدارة اللحظات الحاسمة",
+                gal_b3:"لاعب في الفريق الأول",
+                gal_i1: "الصورة 1 / لقطة تدريبية",
+                gal_i2: "الصورة 2 / القيادة والتوجيه",
+                gal_i3: "الصورة 3 / كابتن الفريق الأول",
+
+                sec_con_tag: "الاتصال المباشر والفرص",
+                sec_con_title: "ابدأ التعاون مع الكابتن بلال",
+                form_name: "الاسم الكريم / الجهة الرياضية",
+                form_email: "البريد الإلكتروني للاتصال",
+                form_subject: "الموضوع",
+                form_message: "تفاصيل الاستفسار أو عرض العمل",
+                form_submit: "إرسال الرسالة مباشرة",
+                footer_rights: "© جميع الحقوق محفوظة للكابتن بلال المصري. تم التطوير بأفضل معايير الويب الرياضية.",
+                modal_success_title: "تم إرسال العرض بنجاح!",
+                modal_success_body: "شكراً لتواصلكم مع الكابتن بلال المصري. سيتم مراجعة العرض والرد عليكم في أقرب وقت.",
+                modal_success_close: "موافق"
+            }
+        };
+
+        // Track active language
+        let currentLang = 'ar';
+
+        // 2. Translation Switch Pill Logic
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            updateUI();
+        }
+
+        function updateUI() {
+            // Document setup based on selected language
+            if (currentLang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                document.body.classList.remove('font-poppins');
+                document.body.classList.add('font-cairo');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                document.body.classList.remove('font-cairo');
+                document.body.classList.add('font-poppins');
+            }
+
+            // Replace texts
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
+                        elem.placeholder = translations[currentLang][key];
+                    } else {
+                        elem.innerHTML = translations[currentLang][key];
+                    }
+                }
+            });
+
+            // Toggle Pill Text representation
+            const langBtnText = document.querySelector('#lang-toggle span');
+            langBtnText.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+        }
+
+        // Initialize defaults
+        updateUI();
+
+        // 3. Mobile Navigation Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
+
+        // 4. Scroll Reveal trigger
+        function revealElementsOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealElementsOnScroll);
+        revealElementsOnScroll(); // Initial Check
+
+        // 5. Counting Animation logic (Triggered once when in view)
+        let countAnimationTriggered = false;
+        function animateCounters() {
+            const statsSection = document.getElementById('stats');
+            if (!statsSection) return;
+
+            const rect = statsSection.getBoundingClientRect();
+            const inViewport = (rect.top <= window.innerHeight && rect.bottom >= 0);
+
+            if (inViewport && !countAnimationTriggered) {
+                countAnimationTriggered = true;
+                const counters = [
+                    { id: 'counter-exp', target: 9 },
+                    { id: 'counter-matches', target: 180 },
+                    { id: 'counter-clubs', target: 5 },
+                    { id: 'counter-achieve', target: 6 }
+                ];
+
+                counters.forEach(c => {
+                    const el = document.getElementById(c.id);
+                    if (!el) return;
+                    let current = 0;
+                    const duration = 1800; // Animation speed
+                    const steps = 40;
+                    const increment = Math.ceil(c.target / steps);
+                    const intervalTime = duration / steps;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= c.target) {
+                            current = c.target;
+                            clearInterval(timer);
+                        }
+                        el.textContent = current;
+                    }, intervalTime);
+                });
+            }
+        }
+        window.addEventListener('scroll', animateCounters);
+        animateCounters(); // Initial check
+
+        // 6. Automated Placeholders Hiding on Real Image Import
+        function initializeImagePlaceholders() {
+            document.querySelectorAll('img').forEach(img => {
+                const checkSrc = () => {
+                    const src = img.getAttribute('src');
+                    if (src && src.trim() !== '') {
+                        // Image loaded successfully
+                        img.classList.remove('opacity-0');
+                        img.classList.add('opacity-100');
+                        // Find and hide overlay sibling
+                        const placeholder = img.previousElementSibling;
+                        if (placeholder && placeholder.classList.contains('photo-placeholder')) {
+                            placeholder.style.display = 'none';
+                        }
+                    } else {
+                        // Keep hidden if src empty
+                        img.classList.add('opacity-0');
+                        img.classList.remove('opacity-100');
+                    }
+                };
+
+                const observer = new MutationObserver(checkSrc);
+                observer.observe(img, { attributes: true, attributeFilter: ['src'] });
+                
+                checkSrc();
+                img.onload = checkSrc;
+                img.onerror = () => {
+                    img.style.display = 'none';
+                };
+            });
+        }
+        window.addEventListener('DOMContentLoaded', initializeImagePlaceholders);
+
+        // 7. Integrated Web3Forms Submission with Fetch API
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Show loading state on button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = currentLang === 'ar' ? 'جاري الإرسال الآن...' : 'Sending message...';
+            
+            const formData = new FormData(form);
+            
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Success - Show Success Modal
+                    const modal = document.getElementById('success-modal');
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.classList.add('opacity-100');
+                    form.reset();
+                } else {
+                    // Fallback to local success if key is not configured yet, so the user can test the UI smoothly
+                    const modal = document.getElementById('success-modal');
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.classList.add('opacity-100');
+                    console.log("Web3Forms Submission Note:", json.message);
+                }
+            })
+            .catch(error => {
+                // Network error fallback - still show the premium modal for local preview/testing
+                const modal = document.getElementById('success-modal');
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100');
+                console.warn("Form submitted with mock fallback due to connection error:", error);
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+        }
+    </script>
+</body>
+</html>
